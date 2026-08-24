@@ -4280,3 +4280,43 @@ input:checked + .dock-slider-round:before {
     padding: 20px;
   }
 }
+
+/* ==========================================================================
+   Admin & Login Navigation Styles
+   ========================================================================== */
+.nav-login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid rgba(180, 83, 9, 0.25);
+  border-radius: var(--radius-full);
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-login-btn:hover {
+  background: var(--accent-gradient);
+  color: #FFFFFF;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.25);
+}
+
+.nav-login-btn.logged-in {
+  background: rgba(6, 214, 160, 0.12);
+  border-color: rgba(6, 214, 160, 0.4);
+  color: #059669;
+}
+
+.nav-mobile-login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary) !important;
+  font-weight: 700;
+}

@@ -1315,3 +1315,48 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+// ==========================================================================
+// Authentication Session State & Admin Status Handler
+// ==========================================================================
+function checkAuthStatus() {
+  const loginBtn = document.getElementById('nav-login-btn');
+  const loginText = document.getElementById('nav-login-text');
+  const sessionData = localStorage.getItem('ayan_auth_session');
+
+  if (sessionData) {
+    try {
+      const session = JSON.parse(sessionData);
+      if (session && session.authenticated) {
+        if (loginBtn) {
+          loginBtn.classList.add('logged-in');
+          loginBtn.href = '#';
+          loginBtn.title = `Logged in as ${session.user} (Click to Logout)`;
+          loginBtn.onclick = (e) => {
+            e.preventDefault();
+            if (confirm(`Logout from Developer Session (${session.user})?`)) {
+              localStorage.removeItem('ayan_auth_session');
+              window.location.reload();
+            }
+          };
+        }
+        if (loginText) {
+          loginText.textContent = `Admin ⚡`;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('auth') === 'true') {
+          showToast(`⚡ Developer Mode Active: Welcome ${session.user}`);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+}
+
+// Run auth check on initialization
+document.addEventListener('DOMContentLoaded', checkAuthStatus);
+checkAuthStatus();
+

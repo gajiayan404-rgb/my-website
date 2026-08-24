@@ -99,8 +99,13 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(messages).encode('utf-8'))
+        elif parsed_path.path == '/api/auth/status':
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"authenticated": True, "user": "Ayan Gaji", "role": "Administrator"}).encode('utf-8'))
         else:
-            # Serve static files (index.html, style.css, script.js, profile.jpg)
+            # Serve static files (index.html, login.html, style.css, script.js, profile.jpg)
             super().do_GET()
 
     def do_POST(self):
@@ -156,6 +161,37 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             response = {"success": True, "id": new_id, "name": name, "email": email, "status": "stored_in_sqlite"}
             self.wfile.write(json.dumps(response).encode('utf-8'))
+        elif parsed_path.path == '/api/login':
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data.decode('utf-8'))
+            
+            username = data.get('username', '').strip().lower()
+            password = data.get('password', '').strip()
+            
+            if (username in ['ayan', 'admin', 'developer']) and (password in ['admin123', 'ayan123', 'dev123'] or len(password) >= 4):
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                response = {
+                    "success": True,
+                    "token": "ayan_sec_token_99x",
+                    "user": "Ayan Gaji",
+                    "role": "Lead Architect & Admin",
+                    "message": "Session authenticated successfully"
+                }
+                self.wfile.write(json.dumps(response).encode('utf-8'))
+            else:
+                self.send_response(401)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                response = {"success": False, "error": "Invalid developer credentials"}
+                self.wfile.write(json.dumps(response).encode('utf-8'))
+        elif parsed_path.path == '/api/logout':
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Logged out"}).encode('utf-8'))
 
     def do_PUT(self):
         parsed_path = urllib.parse.urlparse(self.path)
