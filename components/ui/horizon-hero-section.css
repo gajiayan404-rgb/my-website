@@ -1,0 +1,637 @@
+/* Horizon Hero Section Styles - Ultra Premium, Professional 3D Glass Box Architecture */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #030014;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+}
+
+.hero-container.cosmos-style {
+  position: relative;
+  width: 100%;
+  min-height: 300vh;
+  background-color: #030014;
+  color: #ffffff;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+.hero-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none;
+  z-index: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   Shared Professional Interactive Glass Box System
+   ========================================================================== */
+.glass-interactive-box {
+  background: rgba(8, 12, 28, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-interactive-box:hover {
+  background: rgba(14, 20, 42, 0.75);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 20px 50px -10px rgba(0, 150, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Side Glass Menu Box
+   ========================================================================== */
+.side-menu {
+  position: fixed;
+  left: 2.5rem;
+  top: 2.5rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  padding: 1.2rem 0.85rem;
+  border-radius: 9999px;
+  transform: translateZ(0);
+}
+
+.side-menu:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 22px;
+}
+
+.menu-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.side-menu:hover .menu-icon span {
+  background: #38bdf8;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.35em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ==========================================================================
+   Section Navigation Controls (Floating HUD Boxes)
+   ========================================================================== */
+.section-nav-controls {
+  position: fixed;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.nav-controls-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.85rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.nav-dot-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0.35rem;
+  outline: none;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dot-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dot-label {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background: rgba(5, 8, 22, 0.9);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.nav-dot-btn:hover .dot-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.nav-dot-btn:hover .dot-circle {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+  transform: scale(1.3);
+}
+
+.nav-dot-btn.active .dot-circle {
+  background: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 18px #38bdf8, 0 0 35px rgba(129, 140, 248, 0.8);
+  transform: scale(1.5);
+}
+
+.nav-arrow-group {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.35rem;
+  border-radius: 9999px;
+}
+
+.nav-arrow-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* ==========================================================================
+   Center 3D Professional Glass Feature Card Box
+   ========================================================================== */
+.hero-content.cosmos-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  z-index: 10;
+  text-align: center;
+  width: 90%;
+  max-width: 960px;
+  pointer-events: none; /* Let box handle events */
+}
+
+.pro-glass-card-box {
+  pointer-events: auto;
+  position: relative;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(135deg, rgba(10, 16, 38, 0.6) 0%, rgba(5, 8, 22, 0.8) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 30px 80px -20px rgba(0, 0, 0, 0.8),
+    0 0 50px -15px rgba(56, 189, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+/* Dynamic Radial Specular Sheen on Cursor Position */
+.pro-glass-card-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(56, 189, 248, 0.12),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pro-glass-card-box:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 
+    0 40px 100px -20px rgba(0, 0, 0, 0.9),
+    0 0 70px -10px rgba(56, 189, 248, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Header & Holographic Badge */
+.title-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 1.2rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
+}
+
+.badge-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+  animation: pulseBeacon 2s ease-in-out infinite;
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+.badge-text {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #38bdf8;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8.5vw, 6.8rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.05;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 45%, rgba(138, 180, 248, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 35px rgba(0, 150, 255, 0.4));
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-subtitle.cosmos-subtitle {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.subtitle-line {
+  margin: 0.25rem 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+}
+
+/* ==========================================================================
+   Metrics Telemetry Grid (Internal Box Elements)
+   ========================================================================== */
+.metrics-telemetry-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.metric-chip-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-chip-box:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+.metric-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+
+.metric-val-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.metric-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.metric-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.metric-status-glow {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 12px #10b981;
+}
+
+/* Card Action Footer Button */
+.card-footer-action {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.pro-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.25) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.8rem 2rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 150, 255, 0.2);
+}
+
+.pro-explore-btn:hover {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.4) 0%, rgba(129, 140, 248, 0.45) 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 15px 35px rgba(0, 180, 255, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.pro-explore-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.pro-explore-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Interactive Animated Scroll Down Indicator
+   ========================================================================== */
+.interactive-scroll-indicator {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-scroll-indicator:hover {
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.mouse-icon {
+  width: 20px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.mouse-wheel {
+  width: 3px;
+  height: 7px;
+  background: #38bdf8;
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: mouseWheelGlide 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes mouseWheelGlide {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(11px); opacity: 0.4; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.indicator-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.scroll-arrow-pulse {
+  color: #38bdf8;
+  animation: arrowBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* ==========================================================================
+   High Performance Scroll Progress HUD Box
+   ========================================================================== */
+.scroll-progress {
+  position: fixed;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 18px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  transform: translateZ(0);
+}
+
+.scroll-text {
+  color: rgba(56, 189, 248, 0.9);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.progress-track {
+  width: 130px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+  border-radius: 999px;
+  box-shadow: 0 0 14px #818cf8;
+  will-change: width;
+}
+
+.section-counter {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+}
+
+/* Scroll Sections to define document height */
+.scroll-sections {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.content-section {
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-anchor {
+  height: 1px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .metrics-telemetry-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .pro-glass-card-box {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .side-menu {
+    left: 1rem;
+    top: 1rem;
+    padding: 0.8rem 0.6rem;
+  }
+
+  .section-nav-controls {
+    right: 1rem;
+  }
+
+  .scroll-progress {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .interactive-scroll-indicator {
+    bottom: 1.2rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
