@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Ayan Gaji | Developer & Admin Portal. Secure Glassmorphic Authentication & Biometric Access System." />
+    content="Ayan Gaji | Developer & Admin Portal. 3D Liquid Glassmorphic Cyber Authentication System with Multi-Mode Particle Animation Engine." />
   <title>Developer Access Portal — Ayan Gaji | AYAN.DEV</title>
 
   <!-- Google Fonts -->
@@ -20,26 +20,27 @@
 
   <style>
     :root {
-      --bg-dark: #0A0D14;
-      --bg-dark-secondary: #101522;
-      --bg-card: rgba(16, 21, 34, 0.75);
-      --bg-card-hover: rgba(22, 29, 46, 0.85);
+      --bg-dark: #07090E;
+      --bg-dark-secondary: #0D111A;
+      --bg-card: rgba(13, 17, 27, 0.78);
+      --bg-card-hover: rgba(18, 24, 38, 0.88);
       
       --accent-cyan: #00F0FF;
       --accent-purple: #9D4EDD;
+      --accent-pink: #FF007F;
       --accent-gold: #FFB703;
       --accent-green: #06D6A0;
       --accent-primary: #00F0FF;
-      --accent-gradient: linear-gradient(135deg, #00F0FF 0%, #7928CA 50%, #FF0080 100%);
-      --accent-glow: 0 0 25px rgba(0, 240, 255, 0.35);
+      --accent-gradient: linear-gradient(135deg, #00F0FF 0%, #7928CA 50%, #FF007F 100%);
+      --accent-glow: 0 0 30px rgba(0, 240, 255, 0.4);
 
       --text-main: #F8FAFC;
       --text-muted: #94A3B8;
       --text-dim: #64748B;
 
       --glass-border: rgba(255, 255, 255, 0.12);
-      --glass-border-focus: rgba(0, 240, 255, 0.6);
-      --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 240, 255, 0.1);
+      --glass-border-focus: rgba(0, 240, 255, 0.7);
+      --glass-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.15);
 
       --font-family: 'Plus Jakarta Sans', sans-serif;
       --font-heading: 'Space Grotesk', sans-serif;
@@ -67,11 +68,11 @@
       justify-content: center;
       overflow-x: hidden;
       position: relative;
-      padding: 20px;
+      padding: 24px;
     }
 
-    /* Ambient Animated Mesh Background */
-    .bg-canvas {
+    /* Multi-Mode Background Canvas */
+    #fx-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -81,6 +82,7 @@
       pointer-events: none;
     }
 
+    /* Ambient Glowing Atmosphere Orbs */
     .ambient-orbs {
       position: fixed;
       inset: 0;
@@ -92,41 +94,41 @@
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.45;
-      animation: floatOrb 12s infinite alternate ease-in-out;
+      filter: blur(100px);
+      opacity: 0.5;
+      animation: floatOrb 14s infinite alternate ease-in-out;
     }
 
     .orb-1 {
-      width: 450px;
-      height: 450px;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, #00F0FF 0%, rgba(0, 240, 255, 0) 70%);
-      top: -10%;
+      top: -12%;
       left: -10%;
     }
 
     .orb-2 {
-      width: 500px;
-      height: 500px;
+      width: 550px;
+      height: 550px;
       background: radial-gradient(circle, #7928CA 0%, rgba(121, 40, 202, 0) 70%);
-      bottom: -15%;
+      bottom: -18%;
       right: -10%;
-      animation-delay: -6s;
+      animation-delay: -7s;
     }
 
     .orb-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, #FF0080 0%, rgba(255, 0, 128, 0) 70%);
-      top: 40%;
-      right: 25%;
-      animation-delay: -3s;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #FF007F 0%, rgba(255, 0, 127, 0) 70%);
+      top: 35%;
+      right: 20%;
+      animation-delay: -3.5s;
     }
 
     @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(60px, 40px) scale(1.1); }
-      100% { transform: translate(-40px, 80px) scale(0.95); }
+      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate(80px, 50px) scale(1.15) rotate(90deg); }
+      100% { transform: translate(-60px, 90px) scale(0.9) rotate(180deg); }
     }
 
     /* Portal Container */
@@ -134,16 +136,18 @@
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 480px;
-      perspective: 1200px;
+      max-width: 500px;
+      perspective: 1400px;
     }
 
-    /* Top Back Navigation */
-    .top-nav {
+    /* Top Controls Bar with Animation Mode Selector */
+    .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .back-btn {
@@ -152,96 +156,179 @@
       gap: 8px;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       padding: 8px 16px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-full);
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .back-btn:hover {
       color: var(--accent-cyan);
       border-color: var(--accent-cyan);
-      background: rgba(0, 240, 255, 0.1);
+      background: rgba(0, 240, 255, 0.12);
       transform: translateX(-4px);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
     }
 
-    .live-status {
+    /* FX Animation Switcher Pill */
+    .fx-dock {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-family: var(--font-code);
-      color: var(--accent-green);
-      background: rgba(6, 214, 160, 0.1);
-      padding: 6px 14px;
+      background: rgba(13, 17, 27, 0.8);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-full);
-      border: 1px solid rgba(6, 214, 160, 0.25);
+      padding: 3px;
+      backdrop-filter: blur(16px);
+      gap: 2px;
     }
 
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      background-color: var(--accent-green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-green);
-      animation: pulseDot 1.5s infinite;
+    .fx-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.25s ease;
     }
 
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+    .fx-btn:hover {
+      color: var(--text-main);
+    }
+
+    .fx-btn.active {
+      background: var(--accent-gradient);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
     }
 
     /* 3D Glass Login Card */
+    .card-wrapper {
+      position: relative;
+    }
+
+    /* Floating Tech Badges around the Card */
+    .floating-pill {
+      position: absolute;
+      background: rgba(13, 17, 27, 0.85);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-family: var(--font-code);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      z-index: 12;
+      animation: floatBadge 6s infinite ease-in-out alternate;
+      pointer-events: none;
+    }
+
+    .pill-tl {
+      top: -16px;
+      left: -20px;
+      color: #06D6A0;
+      border-color: rgba(6, 214, 160, 0.4);
+      animation-delay: 0s;
+    }
+
+    .pill-tr {
+      top: -16px;
+      right: -20px;
+      color: var(--accent-cyan);
+      border-color: rgba(0, 240, 255, 0.4);
+      animation-delay: -2s;
+    }
+
+    .pill-br {
+      bottom: -14px;
+      right: -15px;
+      color: var(--accent-gold);
+      border-color: rgba(255, 183, 3, 0.4);
+      animation-delay: -4s;
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+      100% { transform: translateY(6px) rotate(-1deg); }
+    }
+
+    /* The Main 3D Card */
     .login-card {
       background: var(--bg-card);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       padding: 40px 36px;
       box-shadow: var(--glass-shadow);
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out, box-shadow 0.3s ease;
     }
 
-    .login-card::before {
-      content: '';
+    /* Animated Neon Light Tracer Border */
+    .tracer-border {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent-gradient);
+      inset: -2px;
+      border-radius: calc(var(--radius-lg) + 2px);
+      background: conic-gradient(from var(--angle, 0deg), transparent 0%, #00F0FF 15%, transparent 30%, transparent 50%, #FF007F 65%, transparent 80%);
+      z-index: -1;
+      animation: rotateConic 6s linear infinite;
+      opacity: 0.85;
     }
 
-    .card-hologram-glow {
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @keyframes rotateConic {
+      to { --angle: 360deg; }
+    }
+
+    .login-card-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Specular Glare Layer */
+    .specular-glare {
       position: absolute;
-      top: -120px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(0, 240, 255, 0.18) 0%, rgba(0, 240, 255, 0) 70%);
+      inset: 0;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.15) 0%, transparent 60%);
       pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.3s ease;
     }
 
     /* Card Header */
     .card-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
       position: relative;
     }
 
     .avatar-wrapper {
       position: relative;
-      width: 80px;
-      height: 80px;
+      width: 86px;
+      height: 86px;
       margin: 0 auto 16px;
     }
 
@@ -251,27 +338,40 @@
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--accent-cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
     }
 
-    .avatar-ring {
+    /* Dual Rotating Hologram Energy Rings */
+    .avatar-ring-1 {
       position: absolute;
       inset: -6px;
       border-radius: 50%;
-      border: 2px dashed rgba(0, 240, 255, 0.5);
-      animation: spinRing 14s linear infinite;
+      border: 2px dashed rgba(0, 240, 255, 0.6);
+      animation: spinRing 12s linear infinite;
+    }
+
+    .avatar-ring-2 {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px dotted rgba(255, 0, 127, 0.5);
+      animation: spinRingReverse 16s linear infinite;
     }
 
     @keyframes spinRing {
       100% { transform: rotate(360deg); }
     }
 
+    @keyframes spinRingReverse {
+      100% { transform: rotate(-360deg); }
+    }
+
     .portal-title {
       font-family: var(--font-heading);
-      font-size: 1.65rem;
-      font-weight: 700;
+      font-size: 1.75rem;
+      font-weight: 800;
       letter-spacing: -0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .portal-title .highlight {
@@ -297,7 +397,7 @@
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       padding: 4px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       gap: 4px;
     }
 
@@ -306,12 +406,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px;
+      padding: 11px;
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-family: var(--font-family);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       border-radius: var(--radius-sm);
       cursor: pointer;
@@ -319,15 +419,15 @@
     }
 
     .tab-btn.active {
-      background: rgba(0, 240, 255, 0.12);
+      background: rgba(0, 240, 255, 0.14);
       color: var(--accent-cyan);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
     }
 
     /* Form Fields */
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       position: relative;
     }
 
@@ -354,13 +454,13 @@
       left: 14px;
       color: var(--text-dim);
       font-size: 1.15rem;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
       pointer-events: none;
     }
 
     .form-input {
       width: 100%;
-      background: rgba(10, 13, 20, 0.6);
+      background: rgba(7, 9, 14, 0.7);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       padding: 13px 44px 13px 42px;
@@ -368,18 +468,19 @@
       font-family: var(--font-family);
       font-size: 0.95rem;
       outline: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .form-input:focus {
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.05);
-      background: rgba(10, 13, 20, 0.85);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.28), inset 0 0 10px rgba(0, 240, 255, 0.08);
+      background: rgba(7, 9, 14, 0.92);
+      transform: translateY(-1px);
     }
 
-    .form-input:focus + .input-icon,
     .form-input:focus ~ .input-icon {
       color: var(--accent-cyan);
+      transform: scale(1.1);
     }
 
     .toggle-pwd-btn {
@@ -389,32 +490,91 @@
       border: none;
       color: var(--text-dim);
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: color 0.2s;
+      font-size: 1.15rem;
+      transition: color 0.2s, transform 0.2s;
     }
 
     .toggle-pwd-btn:hover {
       color: var(--text-main);
+      transform: scale(1.1);
     }
 
-    /* Biometric Scan Container */
+    /* Password Strength Dynamic Meter */
+    .pwd-strength-wrap {
+      margin-top: 8px;
+      display: none;
+    }
+
+    .pwd-strength-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pwd-strength-fill {
+      height: 100%;
+      width: 0%;
+      background: #EF4444;
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .pwd-strength-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-code);
+    }
+
+    /* Biometric Holographic Scan Container */
     .biometric-panel {
       display: none;
       text-align: center;
-      padding: 20px 0;
+      padding: 16px 0;
     }
 
     .biometric-panel.active {
       display: block;
     }
 
-    .fingerprint-btn {
-      width: 110px;
-      height: 110px;
+    .biometric-scanner-ring {
+      position: relative;
+      width: 120px;
+      height: 120px;
       margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sonar-wave {
+      position: absolute;
+      inset: 0;
       border-radius: 50%;
-      background: rgba(0, 240, 255, 0.05);
-      border: 2px solid rgba(0, 240, 255, 0.3);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      animation: sonarPing 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    .sonar-wave:nth-child(2) {
+      animation-delay: -1.1s;
+    }
+
+    @keyframes sonarPing {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .fingerprint-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.06);
+      border: 2px solid rgba(0, 240, 255, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -422,19 +582,19 @@
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
-      box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
     }
 
     .fingerprint-btn i {
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       color: var(--accent-cyan);
       transition: transform 0.3s ease;
     }
 
     .fingerprint-btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
       border-color: var(--accent-cyan);
-      box-shadow: 0 0 35px rgba(0, 240, 255, 0.4);
+      box-shadow: 0 0 45px rgba(0, 240, 255, 0.5);
     }
 
     .scan-beam {
@@ -442,15 +602,15 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: #00F0FF;
-      box-shadow: 0 0 15px #00F0FF;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+      box-shadow: 0 0 18px #00F0FF;
       opacity: 0;
     }
 
     .fingerprint-btn.scanning .scan-beam {
       opacity: 1;
-      animation: scanLaser 1.5s infinite ease-in-out;
+      animation: scanLaser 1.4s infinite ease-in-out;
     }
 
     @keyframes scanLaser {
@@ -460,8 +620,9 @@
     }
 
     .biometric-hint {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
+      font-family: var(--font-code);
     }
 
     /* Quick Demo Login Pill */
@@ -469,7 +630,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       font-size: 0.82rem;
     }
 
@@ -482,29 +643,31 @@
     }
 
     .demo-fill-btn {
-      background: rgba(255, 183, 3, 0.1);
-      border: 1px solid rgba(255, 183, 3, 0.3);
+      background: rgba(255, 183, 3, 0.12);
+      border: 1px solid rgba(255, 183, 3, 0.35);
       color: var(--accent-gold);
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: var(--radius-sm);
       font-family: var(--font-code);
       font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: all 0.2s;
+      gap: 5px;
+      transition: all 0.2s ease;
     }
 
     .demo-fill-btn:hover {
-      background: rgba(255, 183, 3, 0.2);
-      transform: translateY(-1px);
+      background: rgba(255, 183, 3, 0.22);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 183, 3, 0.25);
     }
 
-    /* Submit Button */
+    /* Submit Button with Shimmer */
     .submit-btn {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       background: var(--accent-gradient);
       border: none;
       border-radius: var(--radius-md);
@@ -518,15 +681,32 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 12px 28px rgba(0, 240, 255, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
 
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: rotate(25deg);
+      animation: buttonShimmer 4s infinite ease-in-out;
+    }
+
+    @keyframes buttonShimmer {
+      0% { left: -60%; }
+      30%, 100% { left: 140%; }
+    }
+
     .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(0, 240, 255, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 240, 255, 0.5);
     }
 
     .submit-btn:active {
@@ -535,7 +715,7 @@
 
     .submit-btn.loading {
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .submit-btn.loading i {
@@ -561,15 +741,15 @@
 
     .toast-msg.success {
       display: flex;
-      background: rgba(6, 214, 160, 0.12);
-      border: 1px solid rgba(6, 214, 160, 0.4);
+      background: rgba(6, 214, 160, 0.14);
+      border: 1px solid rgba(6, 214, 160, 0.45);
       color: #06D6A0;
     }
 
     .toast-msg.error {
       display: flex;
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.14);
+      border: 1px solid rgba(239, 68, 68, 0.45);
       color: #EF4444;
     }
 
@@ -580,8 +760,8 @@
 
     /* Security Encryption Footer */
     .card-footer {
-      margin-top: 26px;
-      padding-top: 20px;
+      margin-top: 24px;
+      padding-top: 18px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
@@ -598,9 +778,15 @@
       color: var(--accent-cyan);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       .login-card {
         padding: 30px 20px;
+      }
+      .floating-pill {
+        display: none;
+      }
+      .top-bar {
+        justify-content: center;
       }
     }
   </style>
@@ -615,134 +801,376 @@
     <div class="orb orb-3"></div>
   </div>
 
-  <!-- Interactive 3D Canvas -->
-  <canvas id="login-canvas" class="bg-canvas"></canvas>
+  <!-- Multi-Mode Dynamic Canvas -->
+  <canvas id="fx-canvas"></canvas>
 
   <div class="portal-container" id="portal-container">
     
-    <!-- Top Navigation -->
-    <div class="top-nav">
+    <!-- Top Bar Controls -->
+    <div class="top-bar">
       <a href="index.html" class="back-btn">
-        <i class="ri-arrow-left-line"></i> Back to Portfolio
+        <i class="ri-arrow-left-line"></i> Portfolio
       </a>
-      <div class="live-status">
-        <span class="live-dot"></span>
-        <span>SYSTEM SECURE</span>
+
+      <!-- Animation FX Mode Selector -->
+      <div class="fx-dock">
+        <button class="fx-btn active" data-mode="warp" onclick="setFxMode('warp', this)">
+          <i class="ri-rocket-line"></i> Warp
+        </button>
+        <button class="fx-btn" data-mode="aurora" onclick="setFxMode('aurora', this)">
+          <i class="ri-water-flash-line"></i> Aurora
+        </button>
+        <button class="fx-btn" data-mode="matrix" onclick="setFxMode('matrix', this)">
+          <i class="ri-code-line"></i> Matrix
+        </button>
+        <button class="fx-btn" data-mode="constellation" onclick="setFxMode('constellation', this)">
+          <i class="ri-bubble-chart-line"></i> Web
+        </button>
       </div>
     </div>
 
-    <!-- 3D Glass Login Card -->
-    <div class="login-card" id="login-card">
-      <div class="card-hologram-glow"></div>
-
-      <!-- Card Header -->
-      <div class="card-header">
-        <div class="avatar-wrapper">
-          <div class="avatar-ring"></div>
-          <img src="profile.jpg" alt="Ayan Gaji" class="avatar-img" />
-        </div>
-        <h1 class="portal-title">AYAN<span class="highlight">.DEV</span></h1>
-        <p class="portal-subtitle"><i class="ri-shield-keyhole-line"></i> Developer & Admin Access Portal</p>
+    <!-- 3D Card Wrapper with Floating Tech Pills -->
+    <div class="card-wrapper">
+      <div class="floating-pill pill-tl">
+        <i class="ri-terminal-box-line"></i> Python 3.14 REST
+      </div>
+      <div class="floating-pill pill-tr">
+        <i class="ri-database-2-line"></i> SQLite 3.45 DB
+      </div>
+      <div class="floating-pill pill-br">
+        <i class="ri-shield-check-line"></i> TLS 1.3 256-Bit
       </div>
 
-      <!-- Mode Switcher Tabs -->
-      <div class="auth-tabs">
-        <button class="tab-btn active" id="tab-password" onclick="switchAuthMode('password')">
-          <i class="ri-lock-password-line"></i> Password
-        </button>
-        <button class="tab-btn" id="tab-biometric" onclick="switchAuthMode('biometric')">
-          <i class="ri-fingerprint-line"></i> Biometric PIN
-        </button>
-      </div>
+      <!-- 3D Glass Login Card -->
+      <div class="login-card" id="login-card">
+        <div class="tracer-border"></div>
+        <div class="specular-glare" id="specular-glare"></div>
 
-      <!-- Standard Password Form -->
-      <form id="login-form" onsubmit="handleLoginSubmit(event)">
-        <div id="password-fields">
-          <div class="form-group">
-            <label class="form-label">Username / Developer ID</label>
-            <div class="input-wrapper">
-              <input type="text" id="username" class="form-input" placeholder="e.g. ayan or admin" required autocomplete="username" />
-              <i class="ri-user-6-line input-icon"></i>
+        <div class="login-card-inner">
+          <!-- Card Header -->
+          <div class="card-header">
+            <div class="avatar-wrapper">
+              <div class="avatar-ring-1"></div>
+              <div class="avatar-ring-2"></div>
+              <img src="profile.jpg" alt="Ayan Gaji" class="avatar-img" />
             </div>
+            <h1 class="portal-title">AYAN<span class="highlight">.DEV</span></h1>
+            <p class="portal-subtitle"><i class="ri-shield-keyhole-line"></i> Developer & Admin Access Portal</p>
           </div>
 
-          <div class="form-group">
-            <div class="form-label">
-              <span>Security Key / Password</span>
-              <a href="#" onclick="fillDemo(event)" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.78rem;">Need Key?</a>
+          <!-- Mode Switcher Tabs -->
+          <div class="auth-tabs">
+            <button class="tab-btn active" id="tab-password" onclick="switchAuthMode('password')">
+              <i class="ri-lock-password-line"></i> Password
+            </button>
+            <button class="tab-btn" id="tab-biometric" onclick="switchAuthMode('biometric')">
+              <i class="ri-fingerprint-line"></i> Biometric Scan
+            </button>
+          </div>
+
+          <!-- Form Area -->
+          <form id="login-form" onsubmit="handleLoginSubmit(event)">
+            <div id="password-fields">
+              <div class="form-group">
+                <label class="form-label">Username / Developer ID</label>
+                <div class="input-wrapper">
+                  <input type="text" id="username" class="form-input" placeholder="e.g. ayan or admin" required autocomplete="username" />
+                  <i class="ri-user-6-line input-icon"></i>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Security Key / Password</span>
+                  <a href="#" onclick="fillDemo(event)" style="color: var(--accent-cyan); text-decoration: none; font-size: 0.78rem;">Need Key?</a>
+                </div>
+                <div class="input-wrapper">
+                  <input type="password" id="password" class="form-input" placeholder="Enter password" required autocomplete="current-password" oninput="updatePasswordMeter(this.value)" />
+                  <i class="ri-shield-flash-line input-icon"></i>
+                  <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                    <i class="ri-eye-line" id="pwd-icon"></i>
+                  </button>
+                </div>
+
+                <!-- Password Strength Live Meter -->
+                <div class="pwd-strength-wrap" id="pwd-strength-wrap">
+                  <div class="pwd-strength-bar">
+                    <div class="pwd-strength-fill" id="pwd-strength-fill"></div>
+                  </div>
+                  <div class="pwd-strength-text">
+                    <span id="strength-label">Key Strength: None</span>
+                    <span id="entropy-text">256-Bit</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="input-wrapper">
-              <input type="password" id="password" class="form-input" placeholder="Enter password" required autocomplete="current-password" />
-              <i class="ri-shield-flash-line input-icon"></i>
-              <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
-                <i class="ri-eye-line" id="pwd-icon"></i>
+
+            <!-- Biometric Scanner View -->
+            <div class="biometric-panel" id="biometric-panel">
+              <div class="biometric-scanner-ring">
+                <div class="sonar-wave"></div>
+                <div class="sonar-wave"></div>
+                <div class="fingerprint-btn" id="fingerprint-btn" onclick="triggerBiometricScan()">
+                  <div class="scan-beam"></div>
+                  <i class="ri-fingerprint-fill"></i>
+                </div>
+              </div>
+              <p class="biometric-hint" id="biometric-status">Click fingerprint icon to scan biometric key</p>
+            </div>
+
+            <!-- Quick Demo Pill -->
+            <div class="quick-demo-row">
+              <label class="remember-wrap">
+                <input type="checkbox" id="remember-me" checked />
+                <span>Keep session active</span>
+              </label>
+              <button type="button" class="demo-fill-btn" onclick="fillDemo(event)" title="Auto-fill Demo Credentials">
+                <i class="ri-flashlight-line"></i> Quick Demo Fill
               </button>
             </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <i class="ri-login-circle-fill"></i>
+              <span id="btn-text">Authenticate Session</span>
+            </button>
+
+            <!-- Toast Feedback -->
+            <div class="toast-msg" id="toast-msg">
+              <i class="ri-checkbox-circle-fill" id="toast-icon"></i>
+              <span id="toast-text">Authentication successful. Initializing...</span>
+            </div>
+          </form>
+
+          <!-- Security Status Footer -->
+          <div class="card-footer">
+            <div class="security-badge">
+              <i class="ri-lock-2-line"></i>
+              <span>TLS 1.3 • AES-256</span>
+            </div>
+            <span>REST API: SQLite 3</span>
           </div>
         </div>
-
-        <!-- Biometric Scanner View -->
-        <div class="biometric-panel" id="biometric-panel">
-          <div class="fingerprint-btn" id="fingerprint-btn" onclick="triggerBiometricScan()">
-            <div class="scan-beam"></div>
-            <i class="ri-fingerprint-fill"></i>
-          </div>
-          <p class="biometric-hint" id="biometric-status">Click fingerprint icon to scan biometric key</p>
-        </div>
-
-        <!-- Quick Demo Pill -->
-        <div class="quick-demo-row">
-          <label class="remember-wrap">
-            <input type="checkbox" id="remember-me" checked />
-            <span>Keep session active</span>
-          </label>
-          <button type="button" class="demo-fill-btn" onclick="fillDemo(event)" title="Auto-fill Demo Credentials">
-            <i class="ri-flashlight-line"></i> Quick Demo Fill
-          </button>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn" id="submit-btn">
-          <i class="ri-login-circle-fill"></i>
-          <span id="btn-text">Authenticate Session</span>
-        </button>
-
-        <!-- Toast Feedback -->
-        <div class="toast-msg" id="toast-msg">
-          <i class="ri-checkbox-circle-fill" id="toast-icon"></i>
-          <span id="toast-text">Authentication successful. Initializing...</span>
-        </div>
-      </form>
-
-      <!-- Security Status Footer -->
-      <div class="card-footer">
-        <div class="security-badge">
-          <i class="ri-lock-2-line"></i>
-          <span>TLS 1.3 • AES-256</span>
-        </div>
-        <span>REST API: SQLite 3</span>
       </div>
     </div>
   </div>
 
-  <!-- Interactive 3D Physics and Form Authentication Logic -->
+  <!-- Multi-Mode Dynamic Canvas & Authentication Engine -->
   <script>
-    // 3D Card Tilt Physics
+    // ==========================================================================
+    // 1. 3D Mouse Parallax & Specular Glare Physics
+    // ==========================================================================
     const card = document.getElementById('login-card');
-    const container = document.getElementById('portal-container');
+    const glare = document.getElementById('specular-glare');
 
     window.addEventListener('mousemove', (e) => {
       const { innerWidth, innerHeight } = window;
-      const x = (e.clientX - innerWidth / 2) / 35;
-      const y = (e.clientY - innerHeight / 2) / 35;
+      const x = (e.clientX - innerWidth / 2) / 28;
+      const y = (e.clientY - innerHeight / 2) / 28;
+      
       card.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+      
+      const glareX = (e.clientX / innerWidth) * 100;
+      const glareY = (e.clientY / innerHeight) * 100;
+      glare.style.setProperty('--glare-x', `${glareX}%`);
+      glare.style.setProperty('--glare-y', `${glareY}%`);
     });
 
     window.addEventListener('mouseleave', () => {
       card.style.transform = 'rotateY(0deg) rotateX(0deg)';
     });
 
-    // Toggle Password Visibility
+    // ==========================================================================
+    // 2. Multi-Mode Animation FX Canvas Engine (Warp, Aurora, Matrix, Web)
+    // ==========================================================================
+    const canvas = document.getElementById('fx-canvas');
+    const ctx = canvas.getContext('2d');
+    let currentMode = 'warp';
+    let animFrameId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Mode 1: 3D Hyperspace Warp Stars
+    const WARP_COUNT = 240;
+    let warpStars = [];
+    for (let i = 0; i < WARP_COUNT; i++) {
+      warpStars.push({
+        x: (Math.random() - 0.5) * window.innerWidth * 2,
+        y: (Math.random() - 0.5) * window.innerHeight * 2,
+        z: Math.random() * window.innerWidth,
+        pz: Math.random() * window.innerWidth
+      });
+    }
+
+    function renderWarp() {
+      ctx.fillStyle = 'rgba(7, 9, 14, 0.25)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      const speed = 12;
+
+      for (let star of warpStars) {
+        star.z -= speed;
+        if (star.z <= 0) {
+          star.z = canvas.width;
+          star.pz = canvas.width;
+          star.x = (Math.random() - 0.5) * canvas.width * 2;
+          star.y = (Math.random() - 0.5) * canvas.height * 2;
+        }
+
+        const k = 250 / star.z;
+        const px = star.x * k + cx;
+        const py = star.y * k + cy;
+
+        const pk = 250 / star.pz;
+        const prevX = star.x * pk + cx;
+        const prevY = star.y * pk + cy;
+        star.pz = star.z;
+
+        if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+          const alpha = Math.min(1, (1 - star.z / canvas.width) * 1.5);
+          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+          ctx.lineWidth = Math.max(0.5, (1 - star.z / canvas.width) * 2.5);
+          ctx.beginPath();
+          ctx.moveTo(prevX, prevY);
+          ctx.lineTo(px, py);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Mode 2: Liquid Aurora Waves
+    let auroraTick = 0;
+    function renderAurora() {
+      ctx.fillStyle = 'rgba(7, 9, 14, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      auroraTick += 0.02;
+
+      const layers = [
+        { color: 'rgba(0, 240, 255, 0.25)', speed: 1, freq: 0.003, amp: 70, yOff: 0.35 },
+        { color: 'rgba(157, 78, 221, 0.25)', speed: 1.4, freq: 0.004, amp: 85, yOff: 0.5 },
+        { color: 'rgba(255, 0, 127, 0.2)', speed: 0.8, freq: 0.0025, amp: 90, yOff: 0.65 }
+      ];
+
+      layers.forEach(layer => {
+        ctx.fillStyle = layer.color;
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height);
+
+        for (let x = 0; x <= canvas.width; x += 15) {
+          const y = canvas.height * layer.yOff +
+            Math.sin(x * layer.freq + auroraTick * layer.speed) * layer.amp +
+            Math.cos(x * 0.002 - auroraTick * 0.5) * 30;
+          ctx.lineTo(x, y);
+        }
+
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.closePath();
+        ctx.fill();
+      });
+    }
+
+    // Mode 3: Matrix Code Rain
+    const matrixChars = '01AYANGAJIDEV0123456789ABCDEF$#@*+='.split('');
+    const fontSize = 14;
+    let matrixColumns = Math.floor(window.innerWidth / fontSize);
+    let matrixDrops = Array(matrixColumns).fill(1);
+
+    function renderMatrix() {
+      ctx.fillStyle = 'rgba(7, 9, 14, 0.12)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00F0FF';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < matrixDrops.length; i++) {
+        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        ctx.fillText(text, i * fontSize, matrixDrops[i] * fontSize);
+
+        if (matrixDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          matrixDrops[i] = 0;
+        }
+        matrixDrops[i]++;
+      }
+    }
+
+    // Mode 4: Constellation Laser Web
+    let webNodes = [];
+    for (let i = 0; i < 50; i++) {
+      webNodes.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        color: Math.random() > 0.5 ? 'rgba(0, 240, 255, 0.7)' : 'rgba(255, 0, 127, 0.7)'
+      });
+    }
+
+    function renderConstellation() {
+      ctx.fillStyle = 'rgba(7, 9, 14, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < webNodes.length; i++) {
+        const n = webNodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+        ctx.fillStyle = n.color;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < webNodes.length; j++) {
+          const n2 = webNodes[j];
+          const dx = n.x - n2.x;
+          const dy = n.y - n2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.3 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Master Animation Loop
+    function loopAnimation() {
+      if (currentMode === 'warp') renderWarp();
+      else if (currentMode === 'aurora') renderAurora();
+      else if (currentMode === 'matrix') renderMatrix();
+      else if (currentMode === 'constellation') renderConstellation();
+
+      animFrameId = requestAnimationFrame(loopAnimation);
+    }
+    loopAnimation();
+
+    // Switch FX Mode Function
+    function setFxMode(mode, btn) {
+      currentMode = mode;
+      document.querySelectorAll('.fx-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      if (mode === 'matrix') {
+        matrixColumns = Math.floor(window.innerWidth / fontSize);
+        matrixDrops = Array(matrixColumns).fill(1);
+      }
+    }
+
+    // ==========================================================================
+    // 3. UI Interactions & Password Strength Live Meter
+    // ==========================================================================
     function togglePasswordVisibility() {
       const pwdInput = document.getElementById('password');
       const pwdIcon = document.getElementById('pwd-icon');
@@ -755,7 +1183,40 @@
       }
     }
 
-    // Switch Tabs: Password vs Biometric
+    function updatePasswordMeter(val) {
+      const wrap = document.getElementById('pwd-strength-wrap');
+      const fill = document.getElementById('pwd-strength-fill');
+      const label = document.getElementById('strength-label');
+      
+      if (!val) {
+        wrap.style.display = 'none';
+        return;
+      }
+      wrap.style.display = 'block';
+
+      let score = 0;
+      if (val.length >= 4) score += 25;
+      if (val.length >= 8) score += 25;
+      if (/[A-Z]/.test(val) || /[0-9]/.test(val)) score += 25;
+      if (/[^A-Za-z0-9]/.test(val)) score += 25;
+
+      fill.style.width = `${score}%`;
+
+      if (score <= 25) {
+        fill.style.backgroundColor = '#EF4444';
+        label.textContent = 'Key Strength: Basic';
+      } else if (score <= 50) {
+        fill.style.backgroundColor = '#FFB703';
+        label.textContent = 'Key Strength: Medium';
+      } else if (score <= 75) {
+        fill.style.backgroundColor = '#00F0FF';
+        label.textContent = 'Key Strength: Secure';
+      } else {
+        fill.style.backgroundColor = '#06D6A0';
+        label.textContent = 'Key Strength: Master Key';
+      }
+    }
+
     function switchAuthMode(mode) {
       const tabPassword = document.getElementById('tab-password');
       const tabBiometric = document.getElementById('tab-biometric');
@@ -775,16 +1236,15 @@
       }
     }
 
-    // Auto-fill Demo Credentials
     function fillDemo(e) {
       if (e) e.preventDefault();
       switchAuthMode('password');
       document.getElementById('username').value = 'ayan';
       document.getElementById('password').value = 'admin123';
+      updatePasswordMeter('admin123');
       showToast('Demo credentials auto-filled (ayan / admin123)', 'success');
     }
 
-    // Biometric Scanner Simulation
     function triggerBiometricScan() {
       const btn = document.getElementById('fingerprint-btn');
       const status = document.getElementById('biometric-status');
@@ -797,14 +1257,15 @@
         status.textContent = '✅ Biometric Key Verified: Developer Ayan Gaji';
         status.style.color = 'var(--accent-green)';
         
-        // Auto authenticate
         setTimeout(() => {
           completeAuthentication('Ayan Gaji (Biometric)');
-        }, 800);
-      }, 1600);
+        }, 700);
+      }, 1500);
     }
 
-    // Handle Form Submit
+    // ==========================================================================
+    // 4. Form Submission & Authentication Workflow
+    // ==========================================================================
     async function handleLoginSubmit(e) {
       e.preventDefault();
       const username = document.getElementById('username').value.trim();
@@ -815,7 +1276,6 @@
       submitBtn.classList.add('loading');
       btnText.textContent = 'Verifying API Credentials...';
 
-      // Call Backend REST API if available
       try {
         const res = await fetch('/api/login', {
           method: 'POST',
@@ -829,15 +1289,13 @@
           return;
         }
       } catch (err) {
-        // Fallback for static hosting / GitHub Pages
         console.log('Using static client authentication fallback');
       }
 
-      // Static fallback credentials validation
       if ((username.toLowerCase() === 'ayan' || username.toLowerCase() === 'admin') && (password === 'admin123' || password === 'ayan123' || password.length >= 4)) {
         setTimeout(() => {
           completeAuthentication(username);
-        }, 800);
+        }, 700);
       } else {
         setTimeout(() => {
           submitBtn.classList.remove('loading');
@@ -847,12 +1305,10 @@
       }
     }
 
-    // Success Authentication
     function completeAuthentication(user) {
       const submitBtn = document.getElementById('submit-btn');
       const btnText = document.getElementById('btn-text');
       
-      // Save session state in localStorage
       localStorage.setItem('ayan_auth_session', JSON.stringify({
         authenticated: true,
         user: user,
@@ -866,10 +1322,9 @@
 
       setTimeout(() => {
         window.location.href = 'index.html?auth=true';
-      }, 1200);
+      }, 1000);
     }
 
-    // Toast Messenger
     function showToast(message, type) {
       const toast = document.getElementById('toast-msg');
       const icon = document.getElementById('toast-icon');
@@ -880,68 +1335,6 @@
       text.textContent = message;
       toast.style.display = 'flex';
     }
-
-    // Interactive Particle Background
-    const canvas = document.getElementById('login-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.8;
-        this.speedY = (Math.random() - 0.5) * 0.8;
-        this.color = Math.random() > 0.5 ? 'rgba(0, 240, 255, 0.4)' : 'rgba(157, 78, 221, 0.4)';
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 45; i++) {
-      particles.push(new Particle());
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.6;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
   </script>
 </body>
 
